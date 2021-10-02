@@ -15,3 +15,20 @@ def subject_view(request):
     }
     template_view = 'courses/subjects_page.html'
     return render(request, template_view, context)
+
+
+def chapter_view(request, subject):
+    subject = Subject.objects.get(url=subject)
+    chapters = Chapter.objects.filter(subject_id=subject)
+    chapter_list = {}
+    for chapter in chapters:
+        chapter_list[chapter] = Topic.objects.filter(chapter_id=chapter)
+
+    context = {
+        'all_subjects': Subject.objects.all(),
+        'current_subject': subject,
+        'chapters': chapter_list
+    }
+    template_view = 'chapters.html'
+
+    return render(request, template_view, context)
