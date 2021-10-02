@@ -22,13 +22,14 @@ def chapter_view(request, subject):
     chapters = Chapter.objects.filter(subject_id=subject)
     chapter_list = {}
     for chapter in chapters:
-        chapter_list[chapter] = Topic.objects.filter(chapter_id=chapter)
+        chapter_list[chapter] = [Topic.objects.filter(chapter_id=chapter)[:3]] + \
+                                [Topic.objects.filter(chapter_id=chapter)[3:6]]
 
     context = {
         'all_subjects': Subject.objects.all(),
         'current_subject': subject,
         'chapters': chapter_list
     }
-    template_view = 'chapters.html'
+    template_view = 'courses/chapters_page.html'
 
     return render(request, template_view, context)
