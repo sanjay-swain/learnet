@@ -2,69 +2,72 @@ from django.db import models
 from django.conf import settings
 
 
-class Classes(models.Model):
+class Class(models.Model):
     user_class = models.CharField(max_length=200)
 
     def __str__(self) -> str:
         return self.user_class
 
 
-class Subjects(models.Model):
+class Subject(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=150, null=True, blank=True)
     url = models.CharField(max_length=30, unique=True)
     class_id = models.ForeignKey(
-        'Classes',
+        'Class',
         on_delete=models.PROTECT
     )
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.title} - {self.class_id.user_class}'
 
 
-class Chapters(models.Model):
+class Chapter(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
     subject_id = models.ForeignKey(
-        'Subjects',
+        'Subject',
         on_delete=models.PROTECT
     )
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.title} - {self.subject_id.title}'
 
 
-class Topics(models.Model):
+class Topic(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
     chapter_id = models.ForeignKey(
-        'Chapters',
+        'Chapter',
         on_delete=models.PROTECT
     )
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.title} - {self.chapter_id.title}'
 
 
-class Videos(models.Model):
+class Video(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
     video_url = models.CharField(max_length=100)
     chapter_id = models.ForeignKey(
-        'Chapters',
+        'Chapter',
         on_delete=models.PROTECT
     )
     topic_id = models.ForeignKey(
-        'Topics',
+        'Topic',
         on_delete=models.PROTECT
     )
     author_id = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT
     )
+
+    def __str__(self) -> str:
+        return f'{self.title} - {self.chapter_id.title}'
