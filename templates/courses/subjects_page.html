@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Subjects{% endblock title %}
+
+{% block content %}
+	<div class="is-flex container">
+		<aside class="menu p-3 mt-4 is-flex-grow-1">
+			<p class="menu-label">
+				Contents
+			</p>
+			<ul class="menu-list">
+				{% for subject in subjects.keys %}
+				<li><a href="#{{subject.url}}">{{subject.title}}</a></li>
+				{% endfor %}
+			</ul>
+		</aside>
+		<section class="pt-3 mt-4 is-flex-grow-5">
+			{% for subject, chapters in subjects.items %}
+			<div class="my-4 card is-flex is-flex-direction-column" id="{{subject.url}}">
+				<header class="card-header">
+					<a href="/courses/{{subject.url}}" class="card-header-title">
+						{{subject.title}}
+					</a>
+				</header>
+				<div class="p-4 is-flex is-flex-direction-row">
+					{% for chapter_div in chapters %}
+						<div class="is-flex-grow-1">
+							{% for chapter in chapter_div %}
+							<div>
+								<a>{{ chapter.title }}</a>
+							</div>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</section>
+	</div>
+		
+{% endblock content %}
