@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{current_subject.title}}{% endblock title %}
+
+{% block content %}
+	<div class="is-flex container">
+		<aside class="menu p-3 mt-4 is-flex-grow-1">
+			<p class="menu-label">
+				Contents
+			</p>
+			<ul class="menu-list">
+				{% for subject in all_subjects %}
+					{% if subject == current_subject %}
+						<li>
+								<a href="/courses/{{subject.url}}" class="is-active">{{subject.title}}</a>
+								<ul>
+									{% for chapter in chapters.keys %}
+										<li><a href="#{{chapter.url}}">{{chapter.title}}</a></li>
+									{% endfor %}
+								</ul>
+						</li>
+					{% else %}
+						<li><a href="/courses/{{subject.url}}">{{subject.title}}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</aside>
+		<section class="pt-3 mt-4 is-flex-grow-5">
+			{% for chapter, topics in chapters.items %}
+			<div class="my-4 card is-flex is-flex-direction-column" id="{{chapter.url}}">
+				<header class="card-header">
+					<a href="/courses/{{chapter.url}}" class="card-header-title">
+						{{chapter.title}}
+					</a>
+				</header>
+				<div class="p-4 is-flex is-flex-direction-row">
+					{% for topic_div in topics %}
+						<div class="is-flex-grow-1">
+							{% for topic in topic_div %}
+							<div>
+								<a>{{ topic.title }}</a>
+							</div>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</section>
+	</div>
+{% endblock content %}
