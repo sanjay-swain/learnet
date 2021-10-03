@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{current_video.title}}{% endblock title %}
+
+{% block content %}
+
+	<div class="is-flex-desktop is-flex-direction-row-reverse container mt-6">
+		<div class="is-flex-grow-5 m-4">
+			<div style="padding:56.25% 0 0 0;position:relative;">
+				<iframe 
+					src="{{current_video.video_url}}" 
+					frameborder="0" 
+					allow="autoplay; fullscreen; picture-in-picture" 
+					allowfullscreen
+					style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+					title="{{current_video.title}}">
+				</iframe>
+			</div>
+		</div>
+		<aside class="menu is-flex-grow-1 m-4 p-3">
+			<p class="menu-label">
+				Contents
+			</p>
+			<ul class="menu-list">
+				{% for topic in all_topics %}
+					{% if topic == current_topic %}
+						<li>
+								<a href="/courses/{{subject.url}}" class="is-active">{{topic.title}}</a>
+								<ul>
+									{% for video in all_videos %}
+										{% if video == current_video %}
+										<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="is-active">{{video.title}}</a></li>
+										{% else %}
+											<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}">{{video.title}}</a></li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+						</li>
+					{% else %}
+						<li><a href="/courses/{{subject.url}}">{{topic.title}}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</aside>
+	</div>
+
+{% endblock content %}
