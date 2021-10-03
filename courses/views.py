@@ -33,3 +33,24 @@ def chapter_view(request, subject):
     template_view = 'courses/chapters_page.html'
 
     return render(request, template_view, context)
+
+
+def chapter_detail_view(request, subject, chapter):
+    current_subject = Subject.objects.get(url=subject)
+    current_chapter = Chapter.objects.get(url=chapter)
+    all_chapters = Chapter.objects.filter(subject_id=current_subject)
+    all_topics = Topic.objects.filter(chapter_id=current_chapter)
+    topic_list = {}
+    for topic in all_topics:
+        topic_list[topic] = Video.objects.filter(topic_id=topic)
+    
+    context = {
+        'all_subjects': Subject.objects.all(),
+        'current_subject': current_subject,
+        'all_chapters': all_chapters,
+        'current_chapter': current_chapter,
+        'topics': topic_list
+    }
+    template_view = 'courses/chapter_detail_page.html'
+
+    return render(request, template_view, context)
