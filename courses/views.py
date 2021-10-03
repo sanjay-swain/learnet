@@ -62,9 +62,11 @@ def video_detail_view(request, subject, chapter, video):
     current_video = Video.objects.get(url=video)
     current_topic = current_video.topic_id
     all_videos = Video.objects.filter(topic_id=current_topic)
+    all_topics = Topic.objects.filter(chapter_id=current_chapter)
 
     context = {
         'all_videos': all_videos,
+        'all_topics': all_topics,
         'current_subject': current_subject,
         'current_chapter': current_chapter,
         'current_topic': current_topic,
