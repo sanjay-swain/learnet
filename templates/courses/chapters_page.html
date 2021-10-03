@@ -29,7 +29,7 @@
 			{% for chapter, topics in chapters.items %}
 			<div class="my-4 card is-flex is-flex-direction-column" id="{{chapter.url}}">
 				<header class="card-header">
-					<a href="/courses/{{chapter.url}}" class="card-header-title">
+					<a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="card-header-title">
 						{{chapter.title}}
 					</a>
 				</header>
