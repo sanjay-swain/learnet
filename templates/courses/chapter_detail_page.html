@@ -39,7 +39,7 @@
 				</header>
 				<div class="p-4">
 					{% for video in videos %}
-						<a href="">{{video.title}}</a>
+						<a href="/courses/{{current_subject.url}}/{{current_chapter.url}}/{{video.url}}">{{video.title}}</a>
 					{% endfor %}
 				</div>
 			</div>
