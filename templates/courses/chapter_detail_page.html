@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="is-flex container">
-	<aside class="menu p-3 mt-4 is-flex-shrink-1">
+	<aside class="menu p-3 mt-4 is-flex-grow-1">
 		<p class="menu-label">
 			Contents
 		</p>
@@ -15,8 +15,12 @@
 							<a href="/courses/{{subject.url}}" class="is-active">{{subject.title}}</a>
 							<ul>
 								{% for chapter in all_chapters %}
-									<li><a href="#{{chapter.url}}">{{chapter.title}}</a></li>
-								{% endfor %}
+									{% if chapter == current_chapter %}
+									<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="is-active">{{chapter.title}}</a></li>
+									{% else %}
+										<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}">{{chapter.title}}</a></li>
+									{% endif %}
+									{% endfor %}
 							</ul>
 					</li>
 				{% else %}
