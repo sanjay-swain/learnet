@@ -30,7 +30,20 @@
 		</ul>
 	</aside>
 	<section class="pt-3 mt-4 is-flex-grow-5">
-		<!-- TODO -->
+		{% for topic, videos in topics.items %}
+			<div class="card is-flex is-flex-direction-column">
+				<header class="card-header">
+					<a href="" class="card-header-title">
+						{{topic.title}}
+					</a>
+				</header>
+				<div class="p-4">
+					{% for video in videos %}
+						<a href="">{{video.title}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
 	</section>
 </div>
 {% endblock content %}
