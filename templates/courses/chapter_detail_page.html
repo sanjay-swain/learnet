@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{current_chapter.title}}{% endblock title %}
+
+{% block content %}
+<div class="is-flex container">
+	<aside class="menu p-3 mt-4 is-flex-shrink-1">
+		<p class="menu-label">
+			Contents
+		</p>
+		<ul class="menu-list">
+			{% for subject in all_subjects %}
+				{% if subject == current_subject %}
+					<li>
+							<a href="/courses/{{subject.url}}" class="is-active">{{subject.title}}</a>
+							<ul>
+								{% for chapter in all_chapters %}
+									<li><a href="#{{chapter.url}}">{{chapter.title}}</a></li>
+								{% endfor %}
+							</ul>
+					</li>
+				{% else %}
+					<li><a href="/courses/{{subject.url}}">{{subject.title}}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</aside>
+	<section class="pt-3 mt-4 is-flex-grow-5">
+		<!-- TODO -->
+	</section>
+</div>
+{% endblock content %}
