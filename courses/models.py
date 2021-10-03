@@ -55,7 +55,7 @@ class Video(models.Model):
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
-    video_url = models.CharField(max_length=100)
+    video_url = models.CharField(max_length=300)
     chapter_id = models.ForeignKey(
         'Chapter',
         on_delete=models.PROTECT
