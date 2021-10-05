@@ -23,7 +23,7 @@
 
 		<div class="navbar-menu" id="nav-links">
 			<div class="navbar-start">
-				<a href="/courses/" class="navbar-item">
+				<a href="{% url 'subjects' %}" class="navbar-item">
 					Courses
 				</a>
 			</div>
@@ -35,7 +35,7 @@
 						Log In
 					</a>
 					{% else %}
-					<a href="/accounts/logout" class="button is-light">
+					<a href="{% url 'logout' %}" class="button is-light">
 						Log Out
 					</a>
 					{% endif %}
