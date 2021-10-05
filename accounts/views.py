@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
-def login_form(request):
+def login_page(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
