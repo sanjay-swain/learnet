@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Class, Subject, Chapter, Topic, Video
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="login")
 def subject_view(request):
     subject_list = {}
     for subject in Subject.objects.all():
@@ -19,7 +19,7 @@ def subject_view(request):
     return render(request, template_view, context)
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="login")
 def chapter_view(request, subject):
     subject = Subject.objects.get(url=subject)
     chapters = Chapter.objects.filter(subject_id=subject)
@@ -38,7 +38,7 @@ def chapter_view(request, subject):
     return render(request, template_view, context)
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="login")
 def chapter_detail_view(request, subject, chapter):
     current_subject = Subject.objects.get(url=subject)
     current_chapter = Chapter.objects.get(url=chapter)
@@ -60,7 +60,7 @@ def chapter_detail_view(request, subject, chapter):
     return render(request, template_view, context)
 
 
-@login_required(login_url="/accounts/login/")
+@login_required(login_url="login")
 def video_detail_view(request, subject, chapter, video):
     current_subject = Subject.objects.get(url=subject)
     current_chapter = Chapter.objects.get(url=chapter)
