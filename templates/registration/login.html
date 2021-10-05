@@ -5,15 +5,35 @@
 
 {% block content %}
   <div>
-    <div class="container mt-6 center p-6">
+    <div class="form container center mt-6 px-4" style="max-width: 900px;">
       <h2 class="title">Log in</h2>
-      <form method="post" class="box">
+      <form method="POST" action="" class="box">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="button is-primary">Log in</button>
+        <div class="field">
+          <div class="control has-icons-left has-icons-right">
+            <input type="email" name="email" placeholder="Email" class="input is-primary">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <button type="submit" class="button is-primary"> Log In </button>
       </form>
     </div>
+    {% for message in messages %}
+      <p class= "text-center">{{message}}</p>
+    {% endfor %}
   </div>
-
 
 {% endblock content %}
