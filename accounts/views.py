@@ -12,6 +12,7 @@ def login_page(request):
         user = authenticate(username=email, password=password)
 
         if user is not None and valnext == '':
+            messages.success(request, 'You successfully logged in!')
             login(request, user)
             return redirect('home')
         
@@ -28,4 +29,5 @@ def login_page(request):
 
 def logout_page(request):
     logout(request)
+    messages.success(request, 'You have successfully logged out')
     return redirect('home')
