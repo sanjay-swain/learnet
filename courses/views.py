@@ -7,7 +7,7 @@ from .models import Class, Subject, Chapter, Topic, Video
 def subject_view(request):
     subject_list = {}
     for subject in Subject.objects.all():
-        if len(Chapter.objects.filter(subject_id=subject)) > 1:
+        if len(Chapter.objects.filter(subject_id=subject)) >= 1:
             subject_list[subject] = [Chapter.objects.filter(subject_id=subject)[:3]] + \
                                     [Chapter.objects.filter(subject_id=subject)[3:6]]
         else:
@@ -25,9 +25,11 @@ def chapter_view(request, subject):
     chapters = Chapter.objects.filter(subject_id=subject)
     chapter_list = {}
     for chapter in chapters:
-        chapter_list[chapter] = [Topic.objects.filter(chapter_id=chapter)[:3]] + \
-                                [Topic.objects.filter(chapter_id=chapter)[3:6]]
-
+        if len(Topic.objects.filter(chapter_id=chapter)) >= 1:
+            chapter_list[chapter] = [Topic.objects.filter(chapter_id=chapter)[:3]] + \
+                                    [Topic.objects.filter(chapter_id=chapter)[3:6]]
+        else:
+            chapter_list[chapter] = []
     context = {
         'all_subjects': Subject.objects.all(),
         'current_subject': subject,
