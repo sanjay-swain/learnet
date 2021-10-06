@@ -3,8 +3,8 @@
 {% block title %}{{current_subject.title}}{% endblock title %}
 
 {% block content %}
-	<div class="is-flex container">
-		<aside class="is-hidden-mobile menu p-3 mt-4 is-flex-grow-1">
+	<div class="is-flex pt-3">
+		<aside class="is-hidden-mobile menu is-flex-grow-1">
 			<p class="menu-label">
 				Contents
 			</p>
@@ -25,9 +25,9 @@
 				{% endfor %}
 			</ul>
 		</aside>
-		<section class="pt-3 mt-4 is-flex-grow-5">
+		<section class="ml-5 is-flex-grow-5">
 			{% for chapter, topics in chapters.items %}
-			<div class="my-4 card is-flex is-flex-direction-column" id="{{chapter.url}}">
+			<div class="mb-4 card is-flex is-flex-direction-column" id="{{chapter.url}}">
 				<header class="card-header">
 					<a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="card-header-title">
 						{{chapter.title}}
