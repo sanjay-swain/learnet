@@ -13,7 +13,11 @@
         <div class="notification is-danger">
           <button class="delete"></button>
           {% for message in messages %}
-            <p>{{message}}</p>
+            <p>
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                {{ message }}
+              {% endif %}
+            </p>
           {% endfor %}
         </div>
         {% endif %}
