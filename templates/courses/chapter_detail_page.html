@@ -3,47 +3,56 @@
 {% block title %}{{current_chapter.title}}{% endblock title %}
 
 {% block content %}
-<div class="is-flex">
-	<aside class="is-hidden-mobile menu is-flex-grow-1 p-4 is-unselectable" style="max-width: 300px;">
-		<p class="menu-label">
-			Contents
-		</p>
-		<ul class="menu-list">
-			{% for subject in all_subjects %}
-				{% if subject == current_subject %}
-					<li>
-							<a href="/courses/{{subject.url}}" class="is-active">{{subject.title}}</a>
-							<ul>
-								{% for chapter in all_chapters %}
-									{% if chapter == current_chapter %}
-									<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="is-active">{{chapter.title}}</a></li>
-									{% else %}
-										<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}">{{chapter.title}}</a></li>
-									{% endif %}
-								{% endfor %}
-							</ul>
-					</li>
-				{% else %}
-					<li><a href="/courses/{{subject.url}}">{{subject.title}}</a></li>
-				{% endif %}
-			{% endfor %}
+	<nav class="breadcrumb has-succeeds-separator">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/courses/">Courses</a></li>
+			<li><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+			<li class="is-active"><a href="#">{{ current_chapter.title }}</a></li>
 		</ul>
-	</aside>
-	<section class="ml-5 is-flex-grow-5">
-		{% for topic, videos in topics.items %}
-			<div class="card is-flex is-flex-direction-column">
-				<header class="card-header">
-					<a href="" class="card-header-title">
-						{{topic.title}}
-					</a>
-				</header>
-				<div class="p-4">
-					{% for video in videos %}
-						<a href="/courses/{{current_subject.url}}/{{current_chapter.url}}/{{video.url}}">{{video.title}}</a>
-					{% endfor %}
+	</nav>
+
+	<div class="is-flex">
+		<aside class="is-hidden-mobile menu is-flex-grow-1 p-4 is-unselectable" style="max-width: 300px;">
+			<p class="menu-label">
+				Contents
+			</p>
+			<ul class="menu-list">
+				{% for subject in all_subjects %}
+					{% if subject == current_subject %}
+						<li>
+								<a href="/courses/{{subject.url}}" class="is-active">{{subject.title}}</a>
+								<ul>
+									{% for chapter in all_chapters %}
+										{% if chapter == current_chapter %}
+										<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="is-active">{{chapter.title}}</a></li>
+										{% else %}
+											<li><a href="/courses/{{current_subject.url}}/{{chapter.url}}">{{chapter.title}}</a></li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+						</li>
+					{% else %}
+						<li><a href="/courses/{{subject.url}}">{{subject.title}}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</aside>
+		<section class="ml-5 is-flex-grow-5">
+			{% for topic, videos in topics.items %}
+				<div class="card is-flex is-flex-direction-column">
+					<header class="card-header">
+						<a href="" class="card-header-title">
+							{{topic.title}}
+						</a>
+					</header>
+					<div class="p-4">
+						{% for video in videos %}
+							<a href="/courses/{{current_subject.url}}/{{current_chapter.url}}/{{video.url}}">{{video.title}}</a>
+						{% endfor %}
+					</div>
 				</div>
-			</div>
-		{% endfor %}
-	</section>
-</div>
+			{% endfor %}
+		</section>
+	</div>
 {% endblock content %}

@@ -3,6 +3,14 @@
 {% block title %}{{current_subject.title}}{% endblock title %}
 
 {% block content %}
+	<nav class="breadcrumb has-succeeds-separator">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/courses/">Courses</a></li>
+			<li class="is-active"><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+		</ul>
+	</nav>
+
 	<div class="is-flex">
 		<aside class="is-hidden-mobile p-4 menu is-flex-grow-1 is-unselectable" style="max-width: 280px;">
 			<p class="menu-label">

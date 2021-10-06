@@ -3,6 +3,15 @@
 {% block title %}{{current_video.title}}{% endblock title %}
 
 {% block content %}
+	<nav class="breadcrumb has-succeeds-separator">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/courses/">Courses</a></li>
+			<li><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+			<li><a href="/courses/{{ current_subject.url }}/{{ current_chapter.url }}">{{ current_chapter.title }}</a></li>
+			<li class="is-active"><a href="#">{{ current_video.title }}</a></li>
+		</ul>
+	</nav>
 
 	<div class="is-flex-desktop is-flex-direction-row-reverse container">
 		<div class="is-flex-grow-5">
