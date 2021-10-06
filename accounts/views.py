@@ -20,7 +20,7 @@ def login_page(request):
             return redirect(valnext)
 
         else:
-            messages.info(request, 'Try again! username or password is incorrect')
+            messages.error(request, 'Try again! username or password is incorrect')
 
     template_view = 'registration/login.html'
     return render(request, template_view, {})
