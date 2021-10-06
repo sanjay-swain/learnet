@@ -8,6 +8,16 @@
     <div class="form form-group container center mt-6 px-4" style="max-width: 900px;">
       <h2 class="title">Log in</h2>
       <form autocomplete="off" method="POST" action="" class="box">
+
+        {% if messages %}
+        <div class="notification is-danger">
+          <button class="delete"></button>
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
         {% csrf_token %}
         <div class="field">
           <div class="form-group control has-icons-left has-icons-right">
@@ -42,11 +52,6 @@
         <button type="submit" class="button is-primary"> Log In </button>
         <input type="hidden" name="next" value="{{ request.GET.next }}" />
       </form>
-      <div class="errors">
-        {% for message in messages %}
-          <p>{{message}}</p>
-        {% endfor %}
-      </div>
   </div>
 
 {% endblock content %}
