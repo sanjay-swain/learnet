@@ -45,6 +45,18 @@
 	</nav>
 
 	<div class="container mt-6">
+		{% if messages %}
+			<div class="notification is-success">
+				<button class="delete"></button>
+				{% for message in messages %}
+					<p>
+						{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+							{{ message }}
+						{% endif %}
+					</p>
+				{% endfor %}
+			</div>
+		{% endif %}
 		{% block content %}
 		{% endblock content %}
 	</div>

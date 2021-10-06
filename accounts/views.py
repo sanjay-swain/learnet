@@ -17,6 +17,7 @@ def login_page(request):
             return redirect('home')
         
         elif user is not None and valnext != '':
+            messages.success(request, 'You successfully logged in!')
             login(request, user)
             return redirect(valnext)
 
