@@ -24,13 +24,14 @@
 
         {% csrf_token %}
         <div class="field">
+          <label class="label">Email</label>
           <div class="form-group control has-icons-left has-icons-right">
             <input 
-              type="email" 
-              name="email" 
+              type="email"
+              name="email"
               class="input is-primary"
               id="email"
-              placeholder="Email" />
+              placeholder="e.g. example@email.com" />
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -41,13 +42,14 @@
         </div>
 
         <div class="field">
+          <label class="label">Password</label>
           <div class="form-group control has-icons-left">
             <input
               class="input"
               name="password"
               id="password"
               type="password"
-              placeholder="Password">
+              placeholder="********">
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
