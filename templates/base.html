@@ -44,7 +44,8 @@
 		</div>
 	</nav>
 
-	<div class="container mt-6">
+	<div class="container mt-5">
+		<!-- messages div -->
 		{% if messages %}
 			<div class="notification is-success">
 				<button class="delete"></button>
@@ -57,6 +58,39 @@
 				{% endfor %}
 			</div>
 		{% endif %}
+
+		<nav class="breadcrumb has-succeeds-separator">
+			{% if current_video %}
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/courses/">Courses</a></li>
+				<li><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+				<li><a href="/courses/{{ current_subject.url }}/{{ current_chapter.url }}">{{ current_chapter.title }}</a></li>
+				<li class="is-active"><a href="#">{{ current_video.title }}</a></li>
+			</ul>
+
+			{% elif current_chapter %}
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/courses/">Courses</a></li>
+				<li><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+				<li class="is-active"><a href="#">{{ current_chapter.title }}</a></li>
+			</ul>
+
+			{% elif current_subject %}
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/courses/">Courses</a></li>
+				<li><a href="/courses/{{ current_subject.url }}/">{{ current_subject.title }}</a></li>
+			</ul>
+
+			{% elif subjects %}
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/courses/">Courses</a></li>
+			</ul>			
+			{% endif %}
+		</nav>
 		{% block content %}
 		{% endblock content %}
 	</div>
