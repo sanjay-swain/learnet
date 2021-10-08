@@ -12,6 +12,12 @@
 		</ul>
 	</nav>
 
+	<div class="block">
+		<h1 class="title is-3">
+			{{ current_chapter.title }}
+		</h1>
+	</div>
+
 	<div class="is-flex">
 		<aside class="is-hidden-mobile menu is-flex-grow-1 p-4 is-unselectable" style="max-width: 300px;">
 			<p class="menu-label">
@@ -38,7 +44,7 @@
 				{% endfor %}
 			</ul>
 		</aside>
-		<section class="ml-5 is-flex-grow-5">
+		<section class="ml-5 is-flex-grow-5 pt-5">
 			{% for topic, videos in topics.items %}
 				<div class="card is-flex is-flex-direction-column">
 					<header class="card-header">
@@ -53,6 +59,16 @@
 					</div>
 				</div>
 			{% endfor %}
+			{% if current_chapter.description %}
+				<div class="mb-4 card is-flex is-flex-direction-column">
+					<header class="card-header">
+						<a class="card-header-title">Description</a>
+					</header>
+					<div class="p-4">
+						{{ current_chapter.description }}
+					</div>
+				</div>
+			{% endif %}
 		</section>
 	</div>
 {% endblock content %}
