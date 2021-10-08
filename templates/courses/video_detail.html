@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}{{current_video.title}}{% endblock title %}
+{% block title %}Watching {{current_video.title}}{% endblock title %}
 
 {% block content %}
-	<nav class="breadcrumb has-succeeds-separator">
+	<nav class="breadcrumb has-succeeds-separator px-4">
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/courses/">Courses</a></li>
@@ -13,11 +13,18 @@
 		</ul>
 	</nav>
 
+	<div class="px-4">
+		<div class="block">
+			<div class="title is-2">{{ current_video.title }}</div>
+		</div>
+		<hr>
+	</div>
+
 	<div class="is-flex-desktop is-flex-direction-row-reverse container">
-		<div class="is-flex-grow-5">
+		<div class="is-flex-grow-5 px-4">
 			<div style="padding:56.25% 0 0 0;position:relative;">
 				<iframe
-					src="{{current_video.video_url}}" 
+					src="{{current_video.video_url}}"
 					frameborder="0" 
 					allow="autoplay; fullscreen; picture-in-picture" 
 					allowfullscreen
