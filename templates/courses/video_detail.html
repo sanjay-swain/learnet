@@ -22,7 +22,7 @@
 
 	<div class="is-flex-desktop is-flex-direction-row-reverse container">
 		<div class="is-flex-grow-5 px-4">
-			<div style="padding:56.25% 0 0 0;position:relative;">
+			<div style="padding:56.25% 0 0 0;position:relative;" class="block">
 				<iframe
 					src="{{current_video.video_url}}"
 					frameborder="0" 
@@ -31,6 +31,14 @@
 					style="position:absolute;top:0;left:0;width:100%;height:100%;" 
 					title="{{current_video.title}}">
 				</iframe>
+			</div>
+			<div class="card mb-4">
+				<div class="card-header">
+					<div class="card-header-title">Description</div>
+				</div>
+				<div class="p-4">
+					{{ current_video.description }}
+				</div>
 			</div>
 		</div>
 		<aside class="menu is-flex-grow-1 p-3 is-unselectable">
