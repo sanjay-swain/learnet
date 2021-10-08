@@ -32,3 +32,7 @@ def logout_page(request):
     logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect('home')
+
+
+def user_profile(request, index):
+    return render(request, 'profile.html', {})
