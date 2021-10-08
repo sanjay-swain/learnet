@@ -10,7 +10,12 @@
 		</ul>
 	</nav>
 
-	<div class="title is-2">All subjects</div>
+	<div>
+		<section class="block">
+			<div class="title is-2 is-spaced">All subjects</div>
+		</section>
+		<hr>
+	</div>
 
 	<div class="is-flex pt-3">
 		<aside class="is-hidden-mobile menu is-flex-grow-1 p-4 is-unselectable" style="max-width: 280px;">
@@ -25,7 +30,7 @@
 		</aside>
 		<section class="is-flex-grow-5 ml-5">
 			{% for subject, chapters in subjects.items %}
-			<div class="mb-4 card is-flex is-flex-direction-column" id="{{subject.url}}">
+			<div class="mb-4 card is-flex is-flex-direction-column block" id="{{subject.url}}">
 				<header class="card-header">
 					<a href="/courses/{{subject.url}}" class="card-header-title">
 						{{subject.title}}

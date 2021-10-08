@@ -16,6 +16,7 @@
 		<h1 class="title is-3">
 			{{ current_chapter.title }}
 		</h1>
+		<hr>
 	</div>
 
 	<div class="is-flex">
@@ -46,7 +47,7 @@
 		</aside>
 		<section class="ml-5 is-flex-grow-5 pt-5">
 			{% for topic, videos in topics.items %}
-				<div class="card is-flex is-flex-direction-column">
+				<div class="card is-flex is-flex-direction-column block">
 					<header class="card-header">
 						<a href="" class="card-header-title">
 							{{topic.title}}
@@ -60,7 +61,7 @@
 				</div>
 			{% endfor %}
 			{% if current_chapter.description %}
-				<div class="mb-4 card is-flex is-flex-direction-column">
+				<div class="mb-4 card is-flex is-flex-direction-column block">
 					<header class="card-header">
 						<a class="card-header-title">Description</a>
 					</header>

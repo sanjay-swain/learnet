@@ -20,6 +20,7 @@
 			{{ current_subject.description }}
 		</h3>
 		{% endif %}
+		<hr>
 	</div>
 
 	<div class="is-flex">
@@ -46,7 +47,7 @@
 		</aside>
 		<section class="ml-5 is-flex-grow-5 pt-5">
 			{% for chapter, topics in chapters.items %}
-			<div class="mb-4 card is-flex is-flex-direction-column" id="{{chapter.url}}">
+			<div class="mb-4 card is-flex is-flex-direction-column block" id="{{chapter.url}}">
 				<header class="card-header">
 					<a href="/courses/{{current_subject.url}}/{{chapter.url}}" class="card-header-title">
 						{{chapter.title}}
