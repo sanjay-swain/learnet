@@ -1,6 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+
+from .models import User
+from . import decorators
 
 
 def login_page(request):
@@ -28,11 +32,14 @@ def login_page(request):
     return render(request, template_view, {})
 
 
+@login_required(message="You can't logout if you haven't logged in the first place.", login_url="login")
 def logout_page(request):
     logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect('home')
 
 
+@login_required(login_url="login")
 def user_profile(request, index):
-    return render(request, 'profile.html', {})
+    user_account = User.objects.get(id=index)
+    return render(request, 'profile.html', {'current_user': user_account})
