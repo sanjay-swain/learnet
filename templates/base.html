@@ -49,16 +49,23 @@
 	<div class="container mt-5">
 		<!-- messages div -->
 		{% if messages %}
-			<div class="notification is-success">
-				<button class="delete"></button>
-				{% for message in messages %}
-					<p>
-						{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-							{{ message }}
-						{% endif %}
-					</p>
-				{% endfor %}
-			</div>
+			{% for message in messages %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+					<div class="notification is-success">
+						<button class="delete"></button>
+							<p>
+								{{ message }}
+							</p>
+					</div>
+				{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+					<div class="notification is-danger">
+						<button class="delete"></button>
+							<p>
+								{{ message }}
+							</p>
+					</div>
+				{% endif %}
+			{% endfor %}
 		{% endif %}
 
 		{% block content %}
