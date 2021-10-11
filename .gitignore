@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Remove media root from git tracker where the profile photos are stored
+static/images
