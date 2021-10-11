@@ -1,1 +1,23 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+	<nav class="breadcrumb has-succeeds-separator px-4">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a class="is-active">Profile</a></li>
+		</ul>
+	</nav>
+
+	<div class="columns">
+		<div class="column is-one-third is-flex is-flex-direction-column is-align-items-center">
+			<figure class="image is-128x128">
+				<img src="{% static current_user.profile_pic.url %}" alt="" class="is-rounded">
+			</figure>
+			<div>{{current_user.email}}</div>
+		</div>
+		<div class="column">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quis?</div>
+	</div>
+
+{% endblock content %}
