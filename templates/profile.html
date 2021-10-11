@@ -10,14 +10,21 @@
 		</ul>
 	</nav>
 
-	<div class="columns">
-		<div class="column is-one-third is-flex is-flex-direction-column is-align-items-center">
-			<figure class="image is-128x128">
-				<img src="{% static current_user.profile_pic.url %}" alt="" class="is-rounded">
+	<div class="columns pl-4">
+		<div class="column is-one-third">
+			<figure class="image mx-auto block" style="max-width: 200px;">
+				<img src="{% static user_account.profile_pic.url %}" alt="" class="is-rounded">
 			</figure>
-			<div>{{current_user.email}}</div>
+			<div class="has-text-centered-touch">
+				<p class="has-text-weight-bold">{{user_account.get_full_name}}</p>
+				<p>{{user_account.email}}</p>
+				{% if user_account.bio %}
+					<p>{{user_account.bio}}</p>
+				{% endif %}
+				</div>
+
 		</div>
-		<div class="column">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quis?</div>
+		<div class="column has-text-centered">More features regarding profiles coming soon!</div>
 	</div>
 
 {% endblock content %}

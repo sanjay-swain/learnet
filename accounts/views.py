@@ -42,4 +42,4 @@ def logout_page(request):
 @login_required(login_url="login")
 def user_profile(request, index):
     user_account = User.objects.get(id=index)
-    return render(request, 'profile.html', {'current_user': user_account})
+    return render(request, 'profile.html', {'user_account': user_account})
