@@ -17,16 +17,16 @@
       <form autocomplete="off" method="POST" action="" class="box">
 
         {% if messages %}
-        <div class="notification is-danger">
-          <button class="delete"></button>
           {% for message in messages %}
-            <p>
-              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                {{ message }}
-              {% endif %}
-            </p>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+              <div class="notification is-danger">
+                <button class="delete"></button>
+                <p>
+                  {{ message }}
+                </p>
+              </div>
+            {% endif %}
           {% endfor %}
-        </div>
         {% endif %}
 
         {% csrf_token %}
