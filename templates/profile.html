@@ -13,11 +13,17 @@
 	<div class="columns pl-4">
 		<div class="column is-one-third">
 			<figure class="image mx-auto block" style="max-width: 200px;">
-				<img src="{% static user_account.profile_pic.url %}" alt="" class="is-rounded">
+				{% if user_account.profile_pic %}
+					<img src="{% static user_account.profile_pic.url %}" alt="" class="is-rounded">
+				{% else %}
+					<img src="{% static 'accounts/default.jpg' %}" alt="" class="is-rounded">
+				{% endif %}
 			</figure>
 			<div class="has-text-centered-touch">
 				<p class="has-text-weight-bold">{{user_account.get_full_name}}</p>
-				<p>{{user_account.email}}</p>
+				{% if user == user_account %}
+					<p>{{user_account.email}}</p>
+				{% endif %}
 				{% if user_account.bio %}
 					<p>{{user_account.bio}}</p>
 				{% endif %}
