@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Subject, Chapter, Topic, Video
+from accounts.decorators import login_required_message
 
 
+@login_required_message()
 @login_required(login_url="login")
 def subject_view(request):
     subject_list = {}
@@ -19,6 +21,7 @@ def subject_view(request):
     return render(request, template_view, context)
 
 
+@login_required_message()
 @login_required(login_url="login")
 def chapter_view(request, subject):
     subject = Subject.objects.get(url=subject)
@@ -40,6 +43,7 @@ def chapter_view(request, subject):
     return render(request, template_view, context)
 
 
+@login_required_message()
 @login_required(login_url="login")
 def chapter_detail_view(request, subject, chapter):
     current_subject = Subject.objects.get(url=subject)
@@ -62,6 +66,7 @@ def chapter_detail_view(request, subject, chapter):
     return render(request, template_view, context)
 
 
+@login_required_message()
 def topic_view(request, chapter, topic):
     current_chapter = Chapter.objects.get(url=chapter)
     current_subject = current_chapter.subject_id
@@ -70,6 +75,7 @@ def topic_view(request, chapter, topic):
     return redirect(f'/courses/{current_subject.url}/{current_chapter.url}/{next_video.url}')
 
 
+@login_required_message()
 @login_required(login_url="login")
 def video_detail_view(request, subject, chapter, video):
     current_subject = Subject.objects.get(url=subject)

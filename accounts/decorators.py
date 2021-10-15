@@ -36,14 +36,14 @@ def login_required_message(function=None, message='You should be logged in, in o
     return actual_decorator
 
 
-def login_required_message_and_redirect(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=None, message='You should be logged in, in order to see this page.'):
-    if function:
-        return login_required_message(
-            login_required(function, redirect_field_name, login_url),
-            message
-        )
+# def login_required_message_and_redirect(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=None, message='You should be logged in, in order to see this page.'):
+#     if function:
+#         return login_required_message(
+#             login_required(function, redirect_field_name, login_url),
+#             message
+#         )
 
-    return lambda deffered_function: login_required_message_and_redirect(deffered_function, redirect_field_name, login_url, message)
+#     return lambda deffered_function: login_required_message_and_redirect(deffered_function, redirect_field_name, login_url, message)
 
 
-setattr(decorators, 'login_required', login_required_message_and_redirect)
+# setattr(decorators, 'login_required', login_required_message_and_redirect)
