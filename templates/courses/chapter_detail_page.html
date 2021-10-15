@@ -59,6 +59,10 @@
 						{% endfor %}
 					</div>
 				</div>
+			{% empty %}
+				<div class="is-flex is-align-items-center is-justify-content-center mt-4">
+					<p class="subtitle">More videos are coming soon!</p>
+				</div>
 			{% endfor %}
 			{% if current_chapter.description %}
 				<div class="mb-4 card is-flex is-flex-direction-column block">
