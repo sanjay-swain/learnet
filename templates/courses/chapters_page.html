@@ -58,7 +58,7 @@
 						<div class="is-flex-grow-1">
 							{% for topic in topic_div %}
 							<div>
-								<a>{{ topic.title }}</a>
+								<a href="/courses/{{current_subject.url}}/{{chapter.url}}/#{{topic.url}}">{{ topic.title }}</a>
 							</div>
 							{% endfor %}
 						</div>

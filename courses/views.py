@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Subject, Chapter, Topic, Video
 
@@ -49,7 +49,7 @@ def chapter_detail_view(request, subject, chapter):
     topic_list = {}
     for topic in all_topics:
         topic_list[topic] = Video.objects.filter(topic_id=topic)
-    
+
     context = {
         'all_subjects': Subject.objects.all(),
         'current_subject': current_subject,
@@ -60,6 +60,14 @@ def chapter_detail_view(request, subject, chapter):
     template_view = 'courses/chapter_detail_page.html'
 
     return render(request, template_view, context)
+
+
+def topic_view(request, chapter, topic):
+    current_chapter = Chapter.objects.get(url=chapter)
+    current_subject = current_chapter.subject_id
+    current_topic = Topic.objects.get(url=topic)
+    next_video = Video.objects.filter(topic_id=current_topic)[0]
+    return redirect(f'/courses/{current_subject.url}/{current_chapter.url}/{next_video.url}')
 
 
 @login_required(login_url="login")

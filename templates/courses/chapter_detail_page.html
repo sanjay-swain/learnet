@@ -49,7 +49,7 @@
 			{% for topic, videos in topics.items %}
 				<div class="card is-flex is-flex-direction-column block">
 					<header class="card-header">
-						<a href="" class="card-header-title">
+						<a href="/courses/redirect/{{current_chapter.url}}/{{topic.url}}" class="card-header-title" id="{{topic.urls}}">
 							{{topic.title}}
 						</a>
 					</header>
