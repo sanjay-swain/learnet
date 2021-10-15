@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="is-flex">
-		<aside class="is-hidden-mobile menu is-flex-grow-1 p-4 is-unselectable" style="max-width: 300px;">
+		<aside class="is-hidden-mobile menu is-flex-shrink-1 p-4 is-unselectable" style="min-width: 300px;">
 			<p class="menu-label">
 				Contents
 			</p>
@@ -55,7 +55,12 @@
 					</header>
 					<div class="p-4">
 						{% for video in videos %}
-							<a href="/courses/{{current_subject.url}}/{{current_chapter.url}}/{{video.url}}">{{video.title}}</a>
+						<span class="icon-text">
+							<span class="icon">
+								<i class="fas fa-play"></i>
+							</span>
+							<span><a href="/courses/{{current_subject.url}}/{{current_chapter.url}}/{{video.url}}">{{video.title}}</a></span>
+						</span>
 						{% endfor %}
 					</div>
 				</div>
