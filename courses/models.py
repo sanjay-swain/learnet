@@ -10,7 +10,7 @@ class Class(models.Model):
 
 
 class Subject(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     description = models.TextField(max_length=150, null=True, blank=True)
     url = models.CharField(max_length=30, unique=True)
     class_id = models.ForeignKey(
@@ -23,7 +23,7 @@ class Subject(models.Model):
 
 
 class Chapter(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
@@ -37,7 +37,7 @@ class Chapter(models.Model):
 
 
 class Topic(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
@@ -51,7 +51,7 @@ class Topic(models.Model):
 
 
 class Video(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     description = models.TextField(max_length=150, null=True, blank=True)
     index = models.IntegerField()
     url = models.CharField(max_length=30, unique=True)
