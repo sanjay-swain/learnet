@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="is-flex pt-3">
-		<aside class="is-hidden-mobile menu is-flex-shrink-1 p-4 is-unselectable" style="min-width: 300px;">
+		<aside class="is-hidden-mobile menu is-flex-shrink-1 p-4 is-unselectable mr-5" style="min-width: 300px;">
 			<p class="menu-label">
 				Contents
 			</p>
@@ -28,7 +28,7 @@
 				{% endfor %}
 			</ul>
 		</aside>
-		<section class="is-flex-grow-5 ml-5">
+		<section class="is-flex-grow-5">
 			{% for subject, chapters in subjects.items %}
 			<div class="mb-4 card is-flex is-flex-direction-column block" id="{{subject.url}}">
 				<header class="card-header">
