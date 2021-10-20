@@ -1,0 +1,85 @@
+.contact-section {
+  /* height: 40vh; */
+  background: linear-gradient(45deg, #595959 0%, #262626 100%);
+}
+
+
+.contact-section .contact-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.contact-section .contact-details {
+  margin: 0 1rem;
+}
+
+.contact-section a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.contact-section .btn {
+  color: #fff;
+  text-decoration: none;
+  opacity: 1;
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.contact-section .btn:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#0062b3), to(#007ee6));
+  background: linear-gradient(90deg, #0062b3 0%, #007ee6 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-section .btn::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-gradient(linear, left top, right top, from(#0062b3), to(#007ee6));
+  background: linear-gradient(90deg, #0062b3 0%, #007ee6 100%);
+  position: absolute;
+  top: calc(1.5rem + 0.75em);
+  left: 0;
+  right: 0;
+  -webkit-transform: scale(0, 1);
+          transform: scale(0, 1);
+  -webkit-transition: -webkit-transform ease-in-out 250ms;
+  transition: -webkit-transform ease-in-out 250ms;
+  transition: transform ease-in-out 250ms;
+  transition: transform ease-in-out 250ms, -webkit-transform ease-in-out 250ms;
+}
+
+.contact-section .btn:hover::before {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
+footer {
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(to right, #ff3333, #b300b3);
+  border-left-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  background: linear-gradient(45deg, #595959 0%, #262626 100%);
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}

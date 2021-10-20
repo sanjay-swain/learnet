@@ -1,6 +1,6 @@
 {% load static %}
 
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +8,15 @@
 	<title>{% block  title %}Home{% endblock title %}</title>
 	<script src="https://kit.fontawesome.com/bd416e7b0f.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+	{% block style %}  {% endblock style %}
 </head>
 <body>
 
-	<nav class="navbar is-white has-shadow">
+	<nav class="navbar is-primary has-shadow is-fixed-top">
 		<div class="navbar-brand">
 			<a href="/" class="navbar-item">
-				LOTAC
+				CHSE Learn
 			</a>
 			<a class="navbar-burger" id="burger">
         <span></span>
@@ -33,7 +35,7 @@
 			<div class="navbar-end">
 				<div class="navbar-item">
 					{% if not user.is_authenticated %}
-					<a href="{% url 'login' %}" class="button is-primary">
+					<a href="{% url 'login' %}" class="button is-link">
 						Log In
 					</a>
 					{% else %}
@@ -71,6 +73,25 @@
 		{% block content %}
 		{% endblock content %}
 	</div>
+
+	<section id="contacts" class="contact-section">
+		<div class="p-5">
+			<div class="">
+				<h2 class="has-text-white title is-3">Where to find us</h2>
+			</div>
+			<div class="is-flex-tablet is-justify-content-center">
+				<a href="mailto:example@example.com" class="btn contact-details"
+					><i class="fas fa-at"></i> Send a mail</a
+					>
+				<a href="tel:555-555-5555" class="btn contact-details"
+					><i class="fas fa-mobile-alt"></i> Call Us</a
+					>
+			</div>
+		</div>
+	</section>
+	<footer class="contact-section">
+		<p class="has-text-white ml-2">By Learnet - Bhubaneswar, Odisha, India</p>
+	</footer>
 
 	<script src="{% static 'js/index.js' %}"></script>
 </body>
