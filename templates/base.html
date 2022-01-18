@@ -1,4 +1,10 @@
-{% load static %}
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
+
 
 <html lang="en" class="has-navbar-fixed-top">
 <head>
@@ -6,69 +12,42 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{% block  title %}Home{% endblock title %}</title>
-	<script src="https://kit.fontawesome.com/bd416e7b0f.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
 	{% block style %}  {% endblock style %}
 </head>
 <body>
 
-	<nav class="navbar is-primary has-shadow is-fixed-top">
-		<div class="navbar-brand">
-			<a href="/" class="navbar-item">
-				CHSE Learn
-			</a>
-			<a class="navbar-burger" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-		</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">CHSE Learn</a>
 
-		<div class="navbar-menu" id="nav-links">
-			<div class="navbar-start">
-				<a href="{% url 'subjects' %}" class="navbar-item">
-					Courses
-				</a>
-			</div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-			<div class="navbar-end">
-				<div class="navbar-item">
+			<div class="collapse navbar-collapse" id="navmenu">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a href="{% url 'subjects' %}" class="nav-link">Courses</a>
+					</li>
+				</ul>
+
+				<div class="nav-item ms-auto">
 					{% if not user.is_authenticated %}
-					<a href="{% url 'login' %}" class="button is-link">
-						Log In
-					</a>
+						<a href="{% url 'login' %}">
+							<button class="btn btn-outline-primary">Log In</button>
+						</a>
 					{% else %}
-					<a href="{% url 'logout' %}" class="button is-light">
-						Log Out
-					</a>
+						<a href="{% url 'logout' %}">
+							<button class="btn btn-outline-secondary">Log Out</button>
+						</a>
 					{% endif %}
-				</div>
+					</div>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container mt-5">
-		<!-- messages div -->
-		{% if messages %}
-			{% for message in messages %}
-				{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-					<div class="notification is-success">
-						<button class="delete"></button>
-							<p>
-								{{ message }}
-							</p>
-					</div>
-				{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-					<div class="notification is-danger">
-						<button class="delete"></button>
-							<p>
-								{{ message }}
-							</p>
-					</div>
-				{% endif %}
-			{% endfor %}
-		{% endif %}
 
 		{% block content %}
 		{% endblock content %}
@@ -93,6 +72,5 @@
 		<p class="has-text-white ml-2">By Learnet - Bhubaneswar, Odisha, India</p>
 	</footer>
 
-	<script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>
